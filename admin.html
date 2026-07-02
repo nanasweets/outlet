@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Unos outlet uređaja</title>
+    <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>🛠️ Admin panel - Unos uređaja</h1>
+        
+        <div id="status" class="status"></div>
+        
+        <form id="addForm">
+            <input type="hidden" id="password" value="admin123" />
+            
+            <!-- OSNOVNE INFORMACIJE -->
+            <h2>📋 Osnovne informacije</h2>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Broj zapisnika</label>
+                    <input type="text" id="brojZapisnika" placeholder="Auto-generiše se" />
+                    <small>Ostavi prazno za automatsko generisanje</small>
+                </div>
+                <div class="form-group">
+                    <label>Datum obrade</label>
+                    <input type="date" id="datumObrade" />
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Tiket *</label>
+                    <input type="text" id="tiket" placeholder="npr. 250100014" required />
+                </div>
+                <div class="form-group">
+                    <label>EAN / Ručni unos</label>
+                    <input type="text" id="ean" placeholder="npr. 1139365" />
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Materijal</label>
+                    <input type="text" id="materijal" placeholder="npr. 1139365" />
+                </div>
+                <div class="form-group">
+                    <label>Naziv artikla *</label>
+                    <input type="text" id="nazivArtikla" placeholder="npr. BEKO Ugradni frižideri BCHA275E4SN" required />
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Robna grupa 3</label>
+                    <input type="text" id="robnaGrupa3" placeholder="npr. Ugradni frižideri" />
+                </div>
+                <div class="form-group">
+                    <label>Robna grupa *</label>
+                    <input type="text" id="robnaGrupa" placeholder="npr. Ugradni frižideri sa jednim vratima" required />
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Brend *</label>
+                    <input type="text" id="brend" placeholder="npr. BEKO, LG, BOSCH..." required />
+                </div>
+                <div class="form-group">
+                    <label>Količina</label>
+                    <input type="number" id="kolicina" value="1" />
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Serijski broj</label>
+                    <input type="text" id="serijskiBroj" placeholder="npr. 2411885601" />
+                </div>
+                <div class="form-group">
+                    <label>Dokument veze</label>
+                    <input type="text" id="dokumentVeze" placeholder="npr. 7503-ww13324000005" />
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Broj pošiljke</label>
+                    <input type="text" id="brojPosiljke" placeholder="npr. 250400661" />
+                </div>
+            </div>
+            
+            <!-- OPIS I CENA -->
+            <h2>💰 Cena i opis</h2>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Opis nedostatka *</label>
+                    <textarea id="opisNedostatka" rows="3" placeholder="Detaljan opis oštećenja..." required></textarea>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Nabavna cena (RSD) *</label>
+                    <input type="number" id="nabavnaCena" placeholder="41499.31" step="0.01" required />
+                </div>
+                <div class="form-group">
+                    <label>Opis za kupca</label>
+                    <input type="text" id="opisZaKupca" placeholder="Kratak opis za kupca..." />
+                </div>
+            </div>
+            
+            <!-- LOKACIJA I STATUS -->
+            <h2>📍 Lokacija i status</h2>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Trenutna lokacija *</label>
+                    <input type="text" id="trenutnaLokacija" placeholder="npr. DC73" value="DC73" required />
+                </div>
+                <div class="form-group">
+                    <label>Pozicija</label>
+                    <input type="text" id="pozicija" placeholder="npr. 12-046-0" />
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Nova lokacija</label>
+                    <input type="text" id="novaLokacija" placeholder="npr. DC73" />
+                </div>
+                <div class="form-group">
+                    <label>Outlet kategorija</label>
+                    <select id="outletKategorija">
+                        <option value="">-- Izaberi --</option>
+                        <option value="B">Outlet B – minimalna oštećenja</option>
+                        <option value="C">Outlet C – vidljiva oštećenja</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row checkbox-group">
+                <label>
+                    <input type="checkbox" id="mozeUProdaju" checked />
+                    Može u prodaju?
+                </label>
+                <label>
+                    <input type="checkbox" id="fotografijePostoje" />
+                    Fotografije postoje
+                </label>
+                <label>
+                    <input type="checkbox" id="fizickiPregledan" />
+                    Fizički pregledan
+                </label>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Razlog ako ne može u prodaju</label>
+                    <input type="text" id="razlogAkoNeMoze" placeholder="Ako ne može u prodaju, navedi razlog" />
+                </div>
+            </div>
+            
+            <!-- OŠTEĆENJA -->
+            <h2>🔨 Detalji oštećenja</h2>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Detekcija oštećenja</label>
+                    <input type="text" id="detekcijaOstećenja" placeholder="npr. Oštećenje prednje strane" />
+                </div>
+                <div class="form-group">
+                    <label>Korišćenje uređaja</label>
+                    <select id="koriscenjeUredjaja">
+                        <option value="">-- Izaberi --</option>
+                        <option value="Nekorišćen">Nekorišćen</option>
+                        <option value="Korišćen – oštećen">Korišćen – oštećen</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Levo</label>
+                    <input type="text" id="levo" placeholder="npr. Udubljenje / udar" />
+                </div>
+                <div class="form-group">
+                    <label>Front</label>
+                    <input type="text" id="front" placeholder="npr. Udubljenje / udar" />
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Desno</label>
+                    <input type="text" id="desno" placeholder="npr. Udubljenje / udar" />
+                </div>
+                <div class="form-group">
+                    <label>Nazad</label>
+                    <input type="text" id="nazad" placeholder="npr. Udubljenje / udar" />
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Gore</label>
+                    <input type="text" id="gore" placeholder="npr. Udubljenje / udar" />
+                </div>
+                <div class="form-group">
+                    <label>Dole</label>
+                    <input type="text" id="dole" placeholder="npr. Udubljenje / udar" />
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Funkcionalna ispravnost</label>
+                    <select id="funkcionalnaIspravnost">
+                        <option value="">-- Izaberi --</option>
+                        <option value="Ispravan">Ispravan</option>
+                        <option value="Neispravan">Neispravan</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Servisni status</label>
+                    <select id="servisniStatus">
+                        <option value="">-- Izaberi --</option>
+                        <option value="Nije servisiran">Nije servisiran</option>
+                        <option value="Servisiran">Servisiran</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Tip fizičkog oštećenja</label>
+                    <input type="text" id="tipFizickogOstećenja" placeholder="npr. Udubljenje / udar" />
+                </div>
+                <div class="form-group">
+                    <label>Vidljivost oštećenja</label>
+                    <input type="text" id="vidljivostOstećenja" placeholder="npr. Vidljivo spolja" />
+                </div>
+            </div>
+            
+            <!-- AMBALAŽA -->
+            <h2>📦 Ambaláža i poreklo</h2>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Tip ambalaže</label>
+                    <select id="tipAmbalaze">
+                        <option value="">-- Izaberi --</option>
+                        <option value="Originalna ambalaža">Originalna ambalaža</option>
+                        <option value="Zamenska ambalaža">Zamenska ambalaža</option>
+                        <option value="Nema ambalaže">Nema ambalaže</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Stanje ambalaže detaljno</label>
+                    <input type="text" id="stanjeAmbalazeDetaljno" placeholder="npr. Lagano oštećena" />
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Poreklo uređaja</label>
+                    <input type="text" id="porekloUredjaja" placeholder="npr. Reklamacija – transport THM" />
+                </div>
+                <div class="form-group">
+                    <label>Razlog povrata</label>
+                    <input type="text" id="razlogPovrata" placeholder="npr. Oštećenje" />
+                </div>
+            </div>
+            
+            <!-- PREGLED -->
+            <h2>👤 Pregled</h2>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Datum fizičkog pregleda</label>
+                    <input type="date" id="datumFizickogPregleda" />
+                </div>
+                <div class="form-group">
+                    <label>Pregledao</label>
+                    <input type="text" id="pregledao" placeholder="npr. Darko" />
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Kolona1</label>
+                    <input type="text" id="kolona1" value="da" />
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">➕ Dodaj uređaj</button>
+        </form>
+        
+        <div style="margin-top: 30px; text-align: center;">
+            <a href="index.html" target="_blank">👀 Pogledaj katalog</a>
+        </div>
+    </div>
+    
+    <script src="admin.js"></script>
+</body>
+</html>

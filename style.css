@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    padding: 30px 0 20px;
+    background: white;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+header h1 {
+    font-size: 2.4rem;
+    color: #1a2b4c;
+}
+
+header p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-top: 6px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin: 20px 0 30px;
+    background: white;
+    padding: 18px 20px;
+    border-radius: 50px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.filters input,
+.filters select {
+    padding: 10px 18px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 1rem;
+    min-width: 170px;
+    background: #f8f9fa;
+    transition: all 0.2s;
+}
+
+.filters input:focus,
+.filters select:focus {
+    outline: none;
+    border-color: #1a2b4c;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(26, 43, 76, 0.1);
+}
+
+.reset-btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 30px;
+    background: #1a2b4c;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.reset-btn:hover {
+    background: #2a3b5c;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    background: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    color: #adb5bd;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 16px 18px 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body .brand {
+    font-weight: 700;
+    color: #1a2b4c;
+    font-size: 1.1rem;
+}
+
+.card-body .model {
+    color: #333;
+    font-weight: 600;
+    margin: 2px 0 4px;
+    font-size: 1.05rem;
+}
+
+.card-body .description {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 4px 0 8px;
+    flex: 1;
+}
+
+.card-body .damage {
+    font-size: 0.85rem;
+    color: #b71c1c;
+    background: #ffebee;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 4px 0 8px;
+    align-self: flex-start;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.card-body .price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2e7d32;
+    margin: 6px 0;
+}
+
+.card-body .price small {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.card-body .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 8px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    align-items: center;
+}
+
+.badge {
+    padding: 2px 12px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+.badge-B {
+    background: #c8e6c9;
+    color: #1e5e1e;
+}
+
+.badge-C {
+    background: #ffe0b2;
+    color: #9e4a0f;
+}
+
+.loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px;
+    font-size: 1.2rem;
+    color: #888;
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px;
+    font-size: 1.2rem;
+    color: #888;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 0 10px;
+    color: #aaa;
+    font-size: 0.85rem;
+}
+
+footer a {
+    color: #1a2b4c;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .filters {
+        border-radius: 16px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filters input,
+    .filters select {
+        min-width: 100%;
+    }
+    header h1 {
+        font-size: 1.8rem;
+    }
+}

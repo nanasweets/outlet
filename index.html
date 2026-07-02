@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Outlet frižideri - Katalog</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <header>
+        <h1>🛒 Outlet frižideri</h1>
+        <p>Ispravni uređaji sa manjim vizuelnim oštećenjima – po povoljnijim cenama</p>
+        <p style="font-size:0.85rem; color:#999; margin-top:4px;">
+            📊 Trenutno: <span id="brojUredjaja">0</span> uređaja u ponudi
+        </p>
+    </header>
+
+    <div class="filters">
+        <input type="text" id="search" placeholder="🔍 Pretraži (brend, model, opis...)" />
+        <select id="brandFilter"><option value="">Svi brendovi</option></select>
+        <select id="outletFilter"><option value="">Svi outlet tipovi</option></select>
+        <button id="resetBtn" class="reset-btn">⟲ Resetuj</button>
+    </div>
+
+    <div id="catalog" class="catalog-grid">
+        <div class="loading">⏳ Učitavanje uređaja...</div>
+    </div>
+
+    <footer>
+        <p>Podaci se ažuriraju automatski | <a href="admin.html" target="_blank">🔐 Admin unos</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
