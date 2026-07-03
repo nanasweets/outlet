@@ -63,6 +63,10 @@ header p {
     box-shadow: 0 0 0 3px rgba(26, 43, 76, 0.1);
 }
 
+#sortFilter {
+    cursor: pointer;
+}
+
 .reset-btn {
     padding: 10px 24px;
     border: none;
@@ -92,6 +96,7 @@ header p {
     transition: transform 0.25s, box-shadow 0.25s;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .card:hover {
@@ -144,19 +149,6 @@ header p {
     flex: 1;
 }
 
-.card-body .damage {
-    font-size: 0.85rem;
-    color: #b71c1c;
-    background: #ffebee;
-    padding: 4px 12px;
-    border-radius: 20px;
-    display: inline-block;
-    margin: 4px 0 8px;
-    align-self: flex-start;
-    max-width: 100%;
-    word-wrap: break-word;
-}
-
 .card-body .price {
     font-size: 1.5rem;
     font-weight: 700;
@@ -170,10 +162,10 @@ header p {
     color: #555;
 }
 
-.card-body .meta {
+.meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
     font-size: 0.8rem;
     color: #777;
     margin-top: 8px;
@@ -198,6 +190,129 @@ header p {
 .badge-C {
     background: #ffe0b2;
     color: #9e4a0f;
+}
+
+/* ===== Damage list ===== */
+.damage-list {
+    margin: 8px 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.damage-item {
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    background: #fff3e0;
+    border-radius: 4px;
+    border-left: 3px solid #e65100;
+    display: inline-block;
+}
+
+.damage-item strong {
+    color: #bf360c;
+    font-weight: 600;
+}
+
+.damage-item.no-damage {
+    background: #e8f5e9;
+    border-left-color: #2e7d32;
+    color: #1e5e1e;
+}
+
+/* ===== Modal ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 30px auto;
+    padding: 30px 35px;
+    border-radius: 16px;
+    max-width: 700px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    position: relative;
+    animation: modalFade 0.3s ease;
+}
+
+@keyframes modalFade {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-close {
+    position: absolute;
+    right: 18px;
+    top: 12px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: #333;
+}
+
+#modal-body h2 {
+    margin-top: 0;
+    color: #1a2b4c;
+    border-bottom: 2px solid #e8ecf1;
+    padding-bottom: 12px;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
+    margin-top: 15px;
+}
+
+.detail-item {
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-item .label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-item .value {
+    font-size: 0.95rem;
+    color: #222;
+    margin-top: 2px;
+    word-break: break-word;
+}
+
+.detail-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.damage-detail {
+    background: #fff3e0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-top: 4px;
+    font-size: 0.9rem;
+    border-left: 3px solid #e65100;
 }
 
 .loading {
@@ -244,5 +359,12 @@ footer a:hover {
     }
     header h1 {
         font-size: 1.8rem;
+    }
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+    .modal-content {
+        padding: 20px;
+        margin: 10px;
     }
 }

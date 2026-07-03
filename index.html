@@ -20,11 +20,28 @@
         <input type="text" id="search" placeholder="🔍 Pretraži (brend, model, opis...)" />
         <select id="brandFilter"><option value="">Svi brendovi</option></select>
         <select id="outletFilter"><option value="">Svi outlet tipovi</option></select>
+
+        <!-- Sortiranje -->
+        <select id="sortFilter">
+            <option value="price-asc">💰 Cena (niža → viša)</option>
+            <option value="price-desc">💰 Cena (viša → niža)</option>
+            <option value="name-asc">🔤 Naziv (A → Š)</option>
+            <option value="date-desc">📅 Najnovije prvo</option>
+        </select>
+
         <button id="resetBtn" class="reset-btn">⟲ Resetuj</button>
     </div>
 
     <div id="catalog" class="catalog-grid">
         <div class="loading">⏳ Učitavanje uređaja...</div>
+    </div>
+
+    <!-- Modal za detalje -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
     </div>
 
     <footer>
